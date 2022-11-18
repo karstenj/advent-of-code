@@ -1,1 +1,3 @@
-# advent-of-code-2021
+# Advent of Code solutions
+
+A collection of my AOC solutions in Python.
