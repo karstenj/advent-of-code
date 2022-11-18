@@ -1,1 +1,0 @@
-%windir%\System32\cmd.exe "/K" C:\Users\josch\Documents\GitHub\advent-of-code-2021\activate_pycharm.bat C:\Users\josch\Documents\GitHub\advent-of-code-2021
