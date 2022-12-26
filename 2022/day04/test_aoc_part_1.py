@@ -13,8 +13,8 @@ class TestAOC(unittest.TestCase):
         solution_2 = get_number_part1('input2.txt')
         logging.info(f'Test solution part 1: {solution_1}')
         logging.info(f'Solution part 1: {solution_2}')
-        #self.assertEqual(15, solution_1)
-        #self.assertEqual(9177, solution_2)
+        self.assertEqual(2, solution_1)
+        self.assertEqual(588, solution_2)
 
 if __name__ == '__main__':
     unittest.main()
