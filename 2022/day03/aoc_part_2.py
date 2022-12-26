@@ -10,7 +10,7 @@ def get_number_part2(input_file_name):
         for c1 in l1:
             if c1 in l2 and c1 in l3:
                 item.append(c1)
-                print(c1)
+                #print(c1)
                 break
     for i in item:
         if i >= 'a' and i <= 'z':
