@@ -6,9 +6,30 @@ use std::vec::Vec;
 fn main() {
     get_solution_part1("../input1.txt");
     get_solution_part1("../input2.txt");
+    get_solution_part2("../input1.txt");
+    get_solution_part2("../input2.txt");
 }
 
 fn get_solution_part1(filename: &str) -> u32 {
+    let vec = get_vec(filename);
+    let mut result = 0;
+    match vec.first() {
+        Some(x) => {result = *x},
+        None => {}
+    }
+    println!("Result {} {}", filename, result);
+    return result;
+}
+
+fn get_solution_part2(filename: &str) -> u32 {
+    let vec = get_vec(filename);
+    let slice = &vec[0..3];
+    let result = slice.iter().sum();
+    println!("Result {} {}", filename, result);
+    return result;
+}
+
+fn get_vec(filename: &str) -> Vec<u32> {
     let mut vec: Vec<u32> = Vec::new();
     vec.push(0);
     if let Ok(lines) = read_lines(filename) {
@@ -29,14 +50,8 @@ fn get_solution_part1(filename: &str) -> u32 {
             }
         }
     }
-    let mut result = 0;
-    vec.sort_by(|a, b| b.cmp(a));
-    match vec.first() {
-        Some(x) => {result = *x},
-        None => {}
-    }
-    println!("Result {} {}", filename, result);
-    return result;
+     vec.sort_by(|a, b| b.cmp(a));
+    return vec;
 }
 
 // The output is wrapped in a Result to allow matching on errors
@@ -47,11 +62,19 @@ where P: AsRef<Path>, {
     Ok(io::BufReader::new(file).lines())
 }
 
+#[cfg(test)]
 mod tests {
     use super::*;
+
     #[test]
     fn test_solution_part1() {
         assert_eq!(get_solution_part1("../input1.txt"), 24000);
         assert_eq!(get_solution_part1("../input2.txt"), 66487);
+    }
+
+    #[test]
+    fn test_solution_part2() {
+        assert_eq!(get_solution_part2("../input1.txt"), 45000);
+        assert_eq!(get_solution_part2("../input2.txt"), 197301);
     }
 }
