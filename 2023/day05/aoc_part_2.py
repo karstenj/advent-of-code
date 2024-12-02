@@ -3,6 +3,7 @@ import unittest
 import re
 
 def get_number_part1(input_file_name):
+    print(input_file_name)
     result = sys.maxsize
     with open(input_file_name) as fh:
         lines = fh.readlines()
@@ -38,7 +39,9 @@ def get_number_part1(input_file_name):
         s = seeds[i]
         while s < seeds[i]+seeds[i+1]:
             seed = s
-            if seed in result_map: continue
+            if seed in result_map:
+                print(seed)
+                continue
             #print('Seed', s)
             min_length = sys.maxsize
             for l in map_list:
@@ -50,8 +53,9 @@ def get_number_part1(input_file_name):
                 #print(s)
             result_map[s] = seed
             result = min(seed, result)
+            print(min_length)
             s += min_length
-            #print(s)
+            print(s)
     return result
 
 class TestAOC(unittest.TestCase):
